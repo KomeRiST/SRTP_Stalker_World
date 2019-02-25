@@ -42,22 +42,25 @@ namespace SRTP_Stalker_World.GameTextObjects
         public DlgFrase(XmlNode xNode, GameDialog Parent)
         {
             ParentDialog = Parent;
-            Id = xNode.Attributes.GetNamedItem("id").Value;
-            Properties = new InfoportionAction();
-            Properties.Load(xNode);
-            XmlNode xN = xNode.SelectSingleNode("text");
-            string t = "";
-            if (xN != null)
+            if ((xNode.NodeType != XmlNodeType.Comment) || (xNode.Attributes != null))
             {
-                t = xN.InnerText;
-            }
-            Text = MainWindow.GAME.GetGameStringByID(t);
-            Next = new ObservableCollection<DlgFrase>();
-            NextText = new List<string>();
-            XmlNodeList xNext = xNode.SelectNodes("next");
-            foreach (XmlNode item in xNext)
-            {
-                NextText.Add(item.InnerText);
+                Id = xNode.Attributes.GetNamedItem("id").Value;
+                Properties = new InfoportionAction();
+                Properties.Load(xNode);
+                XmlNode xN = xNode.SelectSingleNode("text");
+                string t = "";
+                if (xN != null)
+                {
+                    t = xN.InnerText;
+                }
+                Text = MainWindow.GAME.GetGameStringByID(t);
+                Next = new ObservableCollection<DlgFrase>();
+                NextText = new List<string>();
+                XmlNodeList xNext = xNode.SelectNodes("next");
+                foreach (XmlNode item in xNext)
+                {
+                    NextText.Add(item.InnerText);
+                }
             }
         }
 
