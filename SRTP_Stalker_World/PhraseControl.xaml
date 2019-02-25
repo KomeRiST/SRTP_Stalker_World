@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="SRTP_Stalker_World.PhraseControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:SRTP_Stalker_World"
+             mc:Ignorable="d"
+             MinHeight="150"
+             MinWidth="200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="11*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="lblIdFrase" Content="{Binding Path=Id}" ToolTip="{Binding Path=Text.Id}" VerticalAlignment="Top" FontWeight="Bold" FontSize="10" Padding="0" HorizontalContentAlignment="Center" Margin="0,5,0,0"/>
+        <TextBlock x:Name="lblTextRus" Margin="10,15,10,0" TextWrapping="Wrap" Text="{Binding Path=Text.Text}" ToolTip="{Binding Path=Text.Text}" Height="25" VerticalAlignment="Top" FontSize="10"/>
+        <Grid Grid.Row="1" Margin="0,0,0,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="17*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Ellipse Fill="#FFF4F4F5" Grid.RowSpan="4" Stroke="Black" VerticalAlignment="Center" Width="5" Height="5" HorizontalAlignment="Center"/>
+            <Ellipse Fill="#FFF4F4F5" Grid.RowSpan="4" Stroke="Black" VerticalAlignment="Center" Width="5" Height="5" HorizontalAlignment="Center" Grid.Column="5"/>
+            <Ellipse Fill="#FFF4F4F5" Grid.RowSpan="1" Stroke="Black" VerticalAlignment="Center" Width="5" Height="5" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1"/>
+            <Ellipse Fill="#FFF4F4F5" Grid.RowSpan="1" Stroke="Black" VerticalAlignment="Center" Width="5" Height="5" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+            <Ellipse Fill="#FFF4F4F5" Grid.RowSpan="1" Stroke="Black" VerticalAlignment="Center" Width="5" Height="5" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1"/>
+            <Ellipse Fill="#FFF4F4F5" Grid.RowSpan="1" Stroke="Black" VerticalAlignment="Center" Width="5" Height="5" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="1"/>
+            <Ellipse Fill="#FFF4F4F5" Grid.RowSpan="2" Stroke="Black" VerticalAlignment="Center" Width="5" Height="5" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="3"/>
+            <Ellipse Fill="#FFF4F4F5" Grid.RowSpan="2" Stroke="Black" VerticalAlignment="Center" Width="5" Height="5" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="3"/>
+        </Grid>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.RowSpan="2"/>
+    </Grid>
+</UserControl>

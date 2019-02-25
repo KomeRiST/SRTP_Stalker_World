@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<dialog id="my_new_dialog" priority="0">
+  <phrase_list>
+    <phrase id="1">
+      <text></text>
+    </phrase>
+    <phrase id="0">
+      <text></text>
+      <next>1</next>
+    </phrase>
+  </phrase_list>
+</dialog>

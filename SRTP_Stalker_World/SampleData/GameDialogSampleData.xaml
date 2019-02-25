@@ -1,0 +1,59 @@
+﻿<GameTextObjects:GameDialog xmlns:GameTextObjects="clr-namespace:SRTP_Stalker_World.GameTextObjects" xmlns:System="clr-namespace:System;assembly=mscorlib" Id="Class aenean curae" Prioritet="Aliquam donec maecenas">
+	<GameTextObjects:GameDialog.Frases_0>
+		<GameTextObjects:DlgFrase Id="Natoque ante consequat">
+			<GameTextObjects:DlgFrase.NextText>
+				<System:String>Tristique nisl velit nunc</System:String>
+				<System:String>Aliquam platea vestibulum odio orci</System:String>
+				<System:String>Pede quam</System:String>
+				<System:String>Aliquet sem</System:String>
+				<System:String>Quis vitae class</System:String>
+				<System:String>Primis sit vestibulum</System:String>
+				<System:String>Vel rutrum urna</System:String>
+				<System:String>Cras curae duis nam sed</System:String>
+				<System:String>Ultricies blandit</System:String>
+				<System:String>Donec adipiscing parturient vestibulum sapien</System:String>
+			</GameTextObjects:DlgFrase.NextText>
+			<GameTextObjects:DlgFrase.Text>
+				<GameTextObjects:GameText Id="Senectus sociosqu convallis vestibulum" Text="Dignissim arcu mus diam posuere">
+					<GameTextObjects:GameText.thisFile>
+						<GameTextObjects:MyFile FileName="Adipiscing nec suscipit parturient" FileDate="02/22/2019 21:15:25"/>
+					</GameTextObjects:GameText.thisFile>
+				</GameTextObjects:GameText>
+			</GameTextObjects:DlgFrase.Text>
+		</GameTextObjects:DlgFrase>
+	</GameTextObjects:GameDialog.Frases_0>
+	<GameTextObjects:GameDialog.Properties>
+		<GameTextObjects:InfoportionAction>
+			<GameTextObjects:InfoportionAction.Action>
+				<System:String>Adipiscing hac</System:String>
+				<System:String>Lobortis augue ligula</System:String>
+				<System:String>Litora dolor luctus magnis leo</System:String>
+				<System:String>Iaculis fames parturient vulputate</System:String>
+				<System:String>Felis curabitur phasellus</System:String>
+				<System:String>Consequat mattis mus convallis mauris</System:String>
+				<System:String>Vestibulum nascetur lacinia ipsum pharetra</System:String>
+				<System:String>Mollis vestibulum</System:String>
+				<System:String>Odio orci dignissim elementum</System:String>
+				<System:String>Montes justo lacus laoreet lorem</System:String>
+			</GameTextObjects:InfoportionAction.Action>
+			<GameTextObjects:InfoportionAction.Precondition>
+				<System:String>Auctor faucibus sit tristique parturient</System:String>
+				<System:String>Dapibus lorem vestibulum</System:String>
+				<System:String>Habitant nisi vel congue nam</System:String>
+				<System:String>Morbi cursus nulla</System:String>
+				<System:String>Egestas dictum</System:String>
+				<System:String>Euismod nisl</System:String>
+				<System:String>Inceptos sed</System:String>
+				<System:String>Ultricies lectus</System:String>
+				<System:String>Nunc interdum venenatis vestibulum dis</System:String>
+				<System:String>Libero est proin feugiat gravida</System:String>
+			</GameTextObjects:InfoportionAction.Precondition>
+		</GameTextObjects:InfoportionAction>
+	</GameTextObjects:GameDialog.Properties>
+	<GameTextObjects:GameDialog.Podpis>
+		<GameTextObjects:Podpis CreateFileDate="Venenatis vulputate"/>
+	</GameTextObjects:GameDialog.Podpis>
+	<GameTextObjects:GameDialog.thisFile>
+		<GameTextObjects:MyFile FileName="Dis est vestibulum bibendum semper" FileDate="02/22/2019 21:15:25"/>
+	</GameTextObjects:GameDialog.thisFile>
+</GameTextObjects:GameDialog>

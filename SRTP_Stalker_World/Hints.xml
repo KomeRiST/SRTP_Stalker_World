@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objects>
+  <obj>
+    <title>Game_dialogs</title>
+    <imagePath>icons\dialogs.png</imagePath>
+    <dialog id="" priority="">
+      <phrase_list>
+        <phrase id="">
+          <text />
+          <next />
+          <action />
+          <precondition />
+          <dont_has_info />
+          <has_info />
+          <give_info />
+          <disable_info />
+        </phrase>
+      </phrase_list>
+      <precondition />
+      <init_func />
+      <has_info />
+      <dont_has_info />
+    </dialog>
+  </obj>
+  <obj>
+    <title>Infoportions</title>
+    <imagePath>icons\infogs.png</imagePath>
+    <infoportion id="">
+      <location>
+        <level />
+        <object />
+        <icon name="" x="" y="" width="" height="" marker="" r="" g="" b="" />
+        <text />
+        <x />
+        <y />
+      </location>
+      <disable />
+      <task />
+      <dialog />
+      <text />
+      <article />
+      <action />
+    </infoportion>
+  </obj>
+  <obj>
+    <title>Tasks</title>
+    <imagePath>icons\tasks.png</imagePath>
+    <task id="" prio="">
+      <title />
+      <objective key="">
+        <text />
+        <icon x="" y="" width="" height="" />
+        <infoportion_fail />
+        <article />
+        <infoportion_complete />
+        <map_location_type hint="" />
+        <object_story_id />
+        <function_complete />
+        <function_fail />
+        <map_location_hidden />
+        <infoportion_set_complete />
+        <infoportion_set_fail />
+        <function_call_complete />
+        <function_call_fail />
+      </objective>
+    </task>
+  </obj>
+</objects>

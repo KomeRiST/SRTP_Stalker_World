@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="SRTP_Stalker_World.DialogProperty"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SRTP_Stalker_World"
+             mc:Ignorable="d" 
+             d:DesignHeight="207.874" d:DesignWidth="274.954">
+    <Grid>
+        <StackPanel Grid.Row="2" Margin="0">
+            <Expander x:Name="expander" Header="Условия показа диалога" VerticalAlignment="Top">
+                <Grid Background="#FFE5E5E5" Height="160">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="137*"/>
+                        <ColumnDefinition Width="115*"/>
+                        <ColumnDefinition Width="21*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Give info" ToolTip="Выдача поршней" Grid.Column="0" VerticalAlignment="Top"/>
+                    <TextBox Text="{Binding Path=Properties.Give}" Grid.Column="1" VerticalAlignment="Top"/>
+                    <Label Content="Disable info" ToolTip="Отмена поршней" Grid.Column="0" VerticalAlignment="Top" Margin="0,25.96,0,-25.96"/>
+                    <TextBox Text="{Binding Path=Properties.Disable}" Grid.Column="1" Margin="0,25.96,0,-25.96" VerticalAlignment="Top"/>
+                    <Label Content="Has info" ToolTip="Проверка на наличие поршней" Grid.Column="0" VerticalAlignment="Top" Margin="0,51.92,0,-51.92"/>
+                    <TextBox Text="{Binding Path=Properties.Has}" Grid.Column="1" Margin="0,51.92,0,-51.92" VerticalAlignment="Top"/>
+                    <Label Content="DontHas info" ToolTip="Проверка на отсутствие поршней" Grid.Column="0" VerticalAlignment="Top" Margin="0,77.88,0,-77.88"/>
+                    <TextBox Text="{Binding Path=Properties.DontHas}" Grid.Column="1" Margin="0,77.88,0,-77.88" VerticalAlignment="Top"/>
+                    <Label Content="Action" ToolTip="Выполнить функцию" Grid.Column="0" VerticalAlignment="Top" Margin="0,103.84,0,-103.84"/>
+                    <TextBox Text="{Binding Path=Properties.Action}" Grid.Column="1" Margin="0,103.84,0,-103.84" VerticalAlignment="Top"/>
+                    <Label Content="Precondition" ToolTip="Функция-условие" Grid.Column="0" VerticalAlignment="Top" Margin="0,129.8,0.001,-129.8"/>
+                    <TextBox Text="{Binding Path=Properties.Precondition}" Grid.Column="1" Margin="0,129.8,0,-129.8" VerticalAlignment="Top"/>
+                </Grid>
+            </Expander>
+            <Expander x:Name="expander1" Header="Все фразы диалога" VerticalAlignment="Top" HorizontalContentAlignment="Stretch">
+                <Grid Background="#FFE5E5E5" Height="160">
+                    <ListBox x:Name="listBox1" ItemsSource="{Binding Path=Frases}"/>
+
+                </Grid>
+            </Expander>
+            <Expander x:Name="expander2" Header="Разное" Height="100" VerticalAlignment="Top">
+                <Grid Background="#FFE5E5E5"/>
+            </Expander>
+
+        </StackPanel>
+
+    </Grid>
+</UserControl>
