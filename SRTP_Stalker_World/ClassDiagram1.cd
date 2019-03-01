@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SRTP_Stalker_World.App" Collapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SRTP_Stalker_World.DialogProperty" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DialogProperty.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SRTP_Stalker_World.Main" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Main.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SRTP_Stalker_World.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAABAAAAAACAAAEEAAAgAAAAIAAAiAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SRTP_Stalker_World.PhraseControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PhraseControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SRTP_Stalker_World.RelayCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAEAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RealyComand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SRTP_Stalker_World.SearchResult" Collapsed="true">
+    <Position X="19" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>SearchResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SRTP_Stalker_World.Window1" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SettingsHint.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SRTP_Stalker_World.textBoxFiltreAll" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>textBoxFiltreAll.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SRTP_Stalker_World.ViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ZAgEgAQAAAAIOAAhICwIgggEgQAAoIiCAAAQAGCICAE=</HashCode>
+      <FileName>ViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SRTP_Stalker_World.ManagerTemplateSelector_Header" Collapsed="true">
+    <Position X="17.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SRTP_Stalker_World.ManagerTemplateSelector_Content" Collapsed="true">
+    <Position X="15.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SRTP_Stalker_World.GameTextObjects.DlgFrase" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgACAAAAAACBUCAEIABAAAAAgAAAAAAqAAAACAAWAAA=</HashCode>
+      <FileName>GameTextObjects\DlgFrase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SRTP_Stalker_World.GameTextObjects.GameArticle" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameTextObjects\GameArticle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SRTP_Stalker_World.GameTextObjects.GameDialog" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAQAAEAAAAQBAAAAEAAAAiCAAAAgACQgA=</HashCode>
+      <FileName>GameTextObjects\GameDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SRTP_Stalker_World.GameTextObjects.GameTask" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAIAAAEAAAAgAAAAAAAAAAACAACAAAAAAAAA=</HashCode>
+      <FileName>GameTextObjects\GameTask.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SRTP_Stalker_World.GameTextObjects.GameText" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>GameTextObjects\GameText.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SRTP_Stalker_World.GameTextObjects.Infoportion" Collapsed="true">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAEBEAAAAAAgAEAAAAAAIEEAgiAAAAAQ=</HashCode>
+      <FileName>GameTextObjects\Infoportion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SRTP_Stalker_World.GameTextObjects.InfoportionAction" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAgAAAAAACAAQAIAAAgACAgQAAAAIACAQgAAAAAEQ=</HashCode>
+      <FileName>GameTextObjects\InfoportionAction.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SRTP_Stalker_World.GameTextObjects.INIManager" Collapsed="true">
+    <Position X="19" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAACAAAAAAAAAACAAAEAAAAAAgA=</HashCode>
+      <FileName>GameTextObjects\IniManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SRTP_Stalker_World.GameTextObjects.MainClass" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABACAIAAAAAAAAAAIBBAAAEAgAEAAAACCAAAAAAAAAA=</HashCode>
+      <FileName>GameTextObjects\MainClass.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SRTP_Stalker_World.GameTextObjects.MyFile" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAIAAAAAAAiAAAAAQAAAAAAABAAAA=</HashCode>
+      <FileName>GameTextObjects\MyFile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SRTP_Stalker_World.GameTextObjects.Podpis" Collapsed="true">
+    <Position X="13.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAIAAAAACgBAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameTextObjects\Podpis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SRTP_Stalker_World.GameTextObjects.VMTreeObjs" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIABAAAAAgAAAAAQAAAAAAABAAAA=</HashCode>
+      <FileName>GameTextObjects\VMTreeDialogs.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SRTP_Stalker_World.Properties.Resources" Collapsed="true">
+    <Position X="17.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SRTP_Stalker_World.Properties.Settings" Collapsed="true">
+    <Position X="12" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

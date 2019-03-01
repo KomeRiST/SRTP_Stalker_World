@@ -79,6 +79,26 @@ namespace SRTP_Stalker_World.GameTextObjects
         {
             return $"{Id}: {Text}";
         }
+
+        public override void Reload()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Save()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Edit()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

@@ -384,89 +384,36 @@ namespace SRTP_Stalker_World
             ReactorObjects.Remove(value);
         }
 
-        // Constructor
-        public ViewModel()
-        {
-            Folder_game = "";
-            SearchString = "";
-            //SelectedString = new GameText();
-            Strings = new ObservableCollection<GameText>();
-            Dialogs = new ObservableCollection<GameDialog>();
-            Infoportions = new ObservableCollection<Infoportion>();
-            ReactorObjects = new ObservableCollection<object>();
-
-            //string fn = Folder_game + GAMEPLAY + "deleted.xml";
-            //XmlDocument xDoc = new XmlDocument();
-            //xDoc.Load("EmptyDialog.xml");
-            //XmlNode xNode = xDoc.SelectSingleNode("dialog");
-            //GameDialog d = new GameDialog(xNode, fn);
-
-            //Dialogs.Add(d);
-        }
-        public ViewModel(string Patch)
-        {
-            if (Folder_game == "")
-            {
-                throw new Exception("Не задан путь к папке с игрой!");
-            }
-            if (Dialogs != null)
-            {
-                Dialogs.Clear();
-            }
-            else
-            {
-                Dialogs = new ObservableCollection<GameDialog>();
-            }
-            if (Strings != null)
-            {
-                Strings.Clear();
-            }
-            else
-            {
-                Strings = new ObservableCollection<GameText>();
-            }
-            if (Infoportions != null)
-            {
-                Infoportions.Clear();
-            }
-            else
-            {
-                Infoportions = new ObservableCollection<Infoportion>();
-            }
-            Load(Patch);
-        }
-
         /// <summary>
         /// Чтение и загрузка ресурсов игры
         /// </summary>
         /// <param name="Folder_game">Путь к папке с игрой</param>
         public void Load(string Folder_game)
         {
-            this.Folder_game = Folder_game;
-            // Считываем файл локализации
-            ArrayList arrSTFiles = GetStringTableFiles();
-            // Проверить каждый файл на существование
-            foreach (string patch in arrSTFiles)
-            {
-                if (File.Exists(Folder_game + TEXT_RUS + patch))
-                {
-                    XmlDocument xDoc = new XmlDocument();
-                    xDoc.Load(Folder_game + TEXT_RUS + patch);
-                    XmlNode xStringTable = xDoc.DocumentElement;
-                    XmlNodeList xStringList = xStringTable.SelectNodes("string");
-                    foreach (XmlNode xString in xStringList)
-                    {
-                        Strings.Add(new GameText(xString, Folder_game + TEXT_RUS + patch));
-                    }
-                }
-                else
-                {
-                    // Вывод в консоль
-                }
-            }
-            // Считываем файлы поршней
+            // Проверяем существование папки gamedata\
             if (Directory.Exists(Folder_game + GAMEDATA))
             {
+                // Считываем файл локализации
+                ArrayList arrSTFiles = GetStringTableFiles();
+                // Проверить каждый файл на существование
+                foreach (string patch in arrSTFiles)
+                {
+                    if (File.Exists(Folder_game + TEXT_RUS + patch))
+                    {
+                        XmlDocument xDoc = new XmlDocument();
+                        xDoc.Load(Folder_game + TEXT_RUS + patch);
+                        XmlNode xStringTable = xDoc.DocumentElement;
+                        XmlNodeList xStringList = xStringTable.SelectNodes("string");
+                        foreach (XmlNode xString in xStringList)
+                        {
+                            Strings.Add(new GameText(xString, Folder_game + TEXT_RUS + patch));
+                        }
+                    }
+                    else
+                    {
+                        // Вывод в консоль
+                    }
+                }
                 // Получили список файлов с поршнями
                 ArrayList arrInfoFiles = GetInfoportionsFiles();
                 // Проверить каждый файл на существование
@@ -537,13 +484,6 @@ namespace SRTP_Stalker_World
             else
             {
                 throw new Exception("В папке с игрой не найдена папка 'gamedata' \n распакуйте *.db архивы и перезапустите программу.");
-                //MessageBox.Show(
-                //    "В папке с игрой не найдена папка 'gamedata' \n распакуйте *.db архивы и перезапустите программу.",
-                //    "Ошибка",
-                //    MessageBoxButton.OK,
-                //    MessageBoxImage.Information,
-                //    MessageBoxResult.OK,
-                //    MessageBoxOptions.DefaultDesktopOnly);
             }
         }
         /// <summary>
@@ -629,6 +569,30 @@ namespace SRTP_Stalker_World
             return arrDialogFiles;
         }
 
+        // Constructor
+        public ViewModel()
+        {
+            Folder_game = "";
+            SearchString = "";
+            //SelectedString = new GameText();
+            Strings = new ObservableCollection<GameText>();
+            Dialogs = new ObservableCollection<GameDialog>();
+            Infoportions = new ObservableCollection<Infoportion>();
+            ReactorObjects = new ObservableCollection<object>();
+        }
+        public ViewModel(string Patch) : base()
+        {
+            if (Folder_game == "")
+            {
+                throw new Exception("Не задан путь к папке с игрой!");
+            }
+            else
+            {
+                Folder_game = "";
+                Load(Patch);
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
@@ -636,6 +600,7 @@ namespace SRTP_Stalker_World
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
     }
+
     /// <summary>
     /// Менеджер выбора шаблона редакторов (Header)
     /// </summary>

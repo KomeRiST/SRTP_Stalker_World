@@ -78,5 +78,30 @@ namespace SRTP_Stalker_World.GameTextObjects
         {
             // дальнейшая обработка XmlNode
         }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
+        public override void Reload()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Save()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Delete()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Edit()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

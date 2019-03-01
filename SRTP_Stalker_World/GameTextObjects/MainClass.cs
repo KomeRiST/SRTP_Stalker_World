@@ -9,10 +9,16 @@ using System.Xml;
 
 namespace SRTP_Stalker_World.GameTextObjects
 {
-    public class MainClass : INotifyPropertyChanged
+    public abstract class MainClass : INotifyPropertyChanged
     {
 
+        /// <summary>
+        /// Уникальное имя объекта
+        /// </summary>
         string _id;
+        /// <summary>
+        /// Файл в котором храниться инфа(обьект)
+        /// </summary>
         MyFile _thisFile;
 
         /// <summary>
@@ -35,6 +41,9 @@ namespace SRTP_Stalker_World.GameTextObjects
             }
         }
 
+        /// <summary>
+        /// Уникальное имя объекта
+        /// </summary>
         public string Id
         {
             get => _id;
@@ -79,5 +88,25 @@ namespace SRTP_Stalker_World.GameTextObjects
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
+
+        /// <summary>
+        /// Перезагрузка объекта из файла
+        /// </summary>
+        public abstract void Reload();
+
+        /// <summary>
+        /// Сохранение объекта
+        /// </summary>
+        public abstract void Save();
+
+        /// <summary>
+        /// Удаление объекта
+        /// </summary>
+        public abstract void Delete();
+
+        /// <summary>
+        /// Редактирование объекта
+        /// </summary>
+        public abstract void Edit();
     }
 }

@@ -15,29 +15,35 @@ namespace SRTP_Stalker_World.GameTextObjects
     /// </summary>
     public class DlgFrase : INotifyPropertyChanged
     {
-        public GameDialog ParentDialog { get; set; }
-        public DlgFrase ParenFrase { get; set; }
-        public bool Cycle { get; set; }
         /// <summary>
         /// Уникальный ID фразы
         /// Обычно это число
         /// </summary>
         public string Id { get => _id; set => _id = value; }
-        private string _id;
+        public GameDialog ParentDialog { get => _parentDialog; set => _parentDialog = value; }
+        public DlgFrase ParenFrase { get => _parenFrase; set => _parenFrase = value; }
+        public bool Cycle { get => _cycle; set => _cycle = value; }
         /// <summary>
         /// Условия показа фразы
         /// </summary>
-        public InfoportionAction Properties { get; set; }
+        public InfoportionAction Properties { get => _properties; set => _properties = value; }
         /// <summary>
         /// ID текста локализации
         /// </summary>
-        public GameText Text { get; set; }
-        //private string IdText;
+        public GameText Text { get => _text; set => _text = value; }
         /// <summary>
         /// Массив вариантов ответов(следующих фраз)
         /// </summary>
-        public ObservableCollection<DlgFrase> Next { get; set; }
-        public List<string> NextText { get; set; }
+        public ObservableCollection<DlgFrase> Next { get => _next; set => _next = value; }
+        public List<string> NextText { get => _nextText; set => _nextText = value; }
+        private string _id;
+        private GameDialog _parentDialog;
+        private DlgFrase _parenFrase;
+        private bool _cycle;
+        private InfoportionAction _properties;
+        private GameText _text;
+        private ObservableCollection<DlgFrase> _next;
+        private List<string> _nextText;
 
         public DlgFrase(XmlNode xNode, GameDialog Parent)
         {
