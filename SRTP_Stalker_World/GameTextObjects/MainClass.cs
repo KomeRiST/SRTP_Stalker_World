@@ -103,10 +103,5 @@ namespace SRTP_Stalker_World.GameTextObjects
         /// Удаление объекта
         /// </summary>
         public abstract void Delete();
-
-        /// <summary>
-        /// Редактирование объекта
-        /// </summary>
-        public abstract void Edit();
     }
 }

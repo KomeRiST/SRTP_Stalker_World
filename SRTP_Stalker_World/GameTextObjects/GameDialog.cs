@@ -27,9 +27,19 @@ namespace SRTP_Stalker_World.GameTextObjects
         /// Массив фраз диалога
         /// </summary>
         public ObservableCollection<DlgFrase> Frases { get; set; }
+        /// <summary>
+        /// Массив сказанных фраз
+        /// Для редактора диалога
+        /// </summary>
         public ObservableCollection<DlgFrase> Frase_voice { get; set; }
+        /// <summary>
+        /// Нулевая/стартовая фраза
+        /// </summary>
         public DlgFrase Frases_0 { get; set; }
 
+        /// <summary>
+        /// Поиск фразы по его ИД
+        /// </summary>
         public DlgFrase GetFraseById(string fId)
         {
             foreach (DlgFrase item in Frases)
@@ -62,11 +72,6 @@ namespace SRTP_Stalker_World.GameTextObjects
                     // Проходим по всем фразам диалога
                     foreach (XmlNode xFrase in xItem.ChildNodes)
                     {
-                        //if (xFrase.Attributes["id"].Value == "0")
-                        //{
-                        //    Frases.Add(new DlgFrase(xFrase, this));
-                        //    LoadNext(xFrase);
-                        //}
                         // Извлекаем узел и передаём в конструктор фразы
                         DlgFrase Frase = new DlgFrase(xFrase, this);
                         //string idfrase = xFrase.Attributes.GetNamedItem("id").Value;
@@ -78,6 +83,13 @@ namespace SRTP_Stalker_World.GameTextObjects
                 Frase_voice.Add(Frases_0);
             }
         }
+        /// <summary>
+        /// Преверка фразы на на то,
+        /// что она ссылается на саму себя в Next'ах своих Children.
+        /// </summary>
+        /// <param name="fr">Проверяемая фраза</param>
+        /// <param name="fStep">Потомок проверяемой фразы</param>
+        /// <returns>Наличие текущей фразы в её же потомках</returns>
         private bool IsCycleFrase(DlgFrase fr, DlgFrase fStep)
         {
             if (fr == fStep)
@@ -93,11 +105,17 @@ namespace SRTP_Stalker_World.GameTextObjects
             }
             return false;
         }
+        /// <summary>
+        /// Создаёт иерархию фраз по Next'ам
+        /// начиная с нулевой фразы.
+        /// </summary>
+        /// <param name="idfrase">ИД фразы от которой строить иерархию</param>
+        /// <returns>Ссылку на фразу</returns>
         private DlgFrase NormalNext(string idfrase = "0")
         {
             // Ищем очередной некст фразу
             DlgFrase fr = GetFraseById(idfrase);
-            if ((fr == null) || (fr.Cycle))
+            if ((fr == null) || fr.Cycle)
             {
                 return null;
             }
@@ -116,29 +134,59 @@ namespace SRTP_Stalker_World.GameTextObjects
             return fr;
         }
 
+        /// <summary>
+        /// Читабельное представление объекта
+        /// </summary>
         public override string ToString()
         {
             return Id;
         }
 
+        /// <summary>
+        /// Перезагрузка объекта из файла
+        /// </summary>
         public override void Reload()
         {
+            // Открыть файл
+            // Найти объект по ИД
+            // Создать новый диалог из XmlNode
+            // Перезаписать поля текущего объекта из нового
+            // Удалить новый объект.
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Сохранение данных в файле
+        /// </summary>
         public override void Save()
         {
+            // 1. Открыть файл (f)
+            // 2. Найти элемент по ИД (e = f.SelectSingleNode(ИД))
+            // 3. Сформировать XmlNode (n = new XmlNode())
+            // 4. e.OutText = n.Text
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Удаление объекта из файла
+        /// </summary>
         public override void Delete()
         {
+            // Либо пометить текущий объект на удаление и при сохранении изменений в проексте удалять
+            // либо удалять сразу из файла
+            // Но видимо метод удаления объектов придётся переместить во ViewModel,
+            //      т.к. удаляемый объект может быть зависимым или иметь связи с другими объетами.
             throw new NotImplementedException();
         }
 
-        public override void Edit()
+        /// <summary>
+        /// Сброс сказанных фраз в редакторе диалога 
+        /// кроме нулевой
+        /// </summary>
+        public void ClearFraseVoice()
         {
-            throw new NotImplementedException();
+            Frase_voice.Clear();
+            Frase_voice.Add(Frases_0);
         }
     }
 }

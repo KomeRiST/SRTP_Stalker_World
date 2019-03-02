@@ -94,11 +94,6 @@ namespace SRTP_Stalker_World.GameTextObjects
         {
             throw new NotImplementedException();
         }
-
-        public override void Edit()
-        {
-            throw new NotImplementedException();
-        }
     }
 
 }
