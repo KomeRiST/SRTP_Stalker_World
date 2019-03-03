@@ -25,18 +25,20 @@ namespace SRTP_Stalker_World
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static ViewModel GAME;
+        public static GameClass GAME;
+        public static ViewModel VM;
         public MainWindow()
         {
             InitializeComponent();
-            GAME = new ViewModel(); // Создаём вьюшку
+            VM = new ViewModel(); // Создаём вьюшку
             XmlDocument xDoc = new XmlDocument(); // Готовимся к работе с XML
             xDoc.Load(@"settings\hint\Hints.xml"); // грузим файл с настройками
             XmlElement xRoot = xDoc.DocumentElement; // Получаем корневой элемент
             XmlNode xNode = xRoot.SelectSingleNode("obj[folder_game]"); // ищем нужный НОДЕ с настройкаим проги
             string fn = xNode.SelectSingleNode("folder_game").InnerText; // Получаем путь к папке с игрой
-            GAME.Load(fn); // Грузим файлы игры
-            DataContext = GAME; // Передаём нашу вьюшку в DataContext окна.
+            VM.Game.Load(fn); // Грузим файлы игры
+            GAME = VM.Game;
+            DataContext = VM; // Передаём нашу вьюшку в DataContext окна.
         }
 
         private void MainMenuFilesItem_Dialogs_Click(object sender, RoutedEventArgs e)
@@ -84,15 +86,15 @@ namespace SRTP_Stalker_World
             TreeView TV = (sender as TreeView);
             if (TV.SelectedItem is GameText)
             {
-                GAME.SelectedString = TV.SelectedItem as GameText;
+                VM.SelectedString = TV.SelectedItem as GameText;
             }
             if (TV.SelectedItem is GameDialog)
             {
-                GAME.SelectedDialog = TV.SelectedItem as GameDialog;
+                VM.SelectedDialog = TV.SelectedItem as GameDialog;
             }
             if (TV.SelectedItem is DlgFrase)
             {
-                GAME.SelectedDialog = (TV.SelectedItem as DlgFrase).ParentDialog;
+                VM.SelectedDialog = (TV.SelectedItem as DlgFrase).ParentDialog;
             }
         }
         /// <summary>
@@ -109,10 +111,10 @@ namespace SRTP_Stalker_World
             ArrayList FileListInfoportions = GAME.GetInfoportionsFiles();
             foreach (string patch in FileListInfoportions)
             {
-                if (File.Exists(GAME.Folder_game + ViewModel.GAMEPLAY + patch))
+                if (File.Exists(GAME.Folder_game + GameClass.GAMEPLAY + patch))
                 {
                     // нормализуем файл (удаляем комментарии)
-                    string NFile = GAME.NormalFile(GAME.Folder_game + ViewModel.GAMEPLAY + patch);
+                    string NFile = GAME.NormalFile(GAME.Folder_game + GameClass.GAMEPLAY + patch);
                     File.WriteAllText("buff_info.xml", NFile);
 
                     XDocument xdoc = new XDocument();
@@ -204,14 +206,14 @@ namespace SRTP_Stalker_World
             }
             else
             {
-                GAME.OpenObjToRedactor(TV.SelectedItem);
+                VM.OpenObjToRedactor(TV.SelectedItem);
             }
 
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            GAME.RemoveObjToRedactor(TabControlRedactors.SelectedItem);
+            VM.RemoveObjToRedactor(TabControlRedactors.SelectedItem);
         }
 
         private void TabControlRedactors_SelectionChanged(object sender, SelectionChangedEventArgs e)

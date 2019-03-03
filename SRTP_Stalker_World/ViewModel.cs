@@ -18,39 +18,9 @@ namespace SRTP_Stalker_World
 {
     public class ViewModel : INotifyPropertyChanged
     {
-        // Константы
-        public const string GAMEDATA = @"gamedata\";
-        public const string CONFIG = @"gamedata\config\";
-        public const string SYSTEM_FILE = @"gamedata\config\system.ltx";
-        public const string LOCALIZATION_FILE = @"gamedata\config\localization.ltx";
-        public const string GAMEPLAY = @"gamedata\config\gameplay\";
-        public const string TEXT_RUS = @"gamedata\config\text\rus\";
 
         // Публичные поля
-        /// <summary>
-        /// Путь к папке с игрой
-        /// </summary>
-        public string Folder_game
-        {
-            get { return folder_game; }
-            set
-            {
-                folder_game = value;
-            }
-        }
-        /// <summary>
-        /// Все диалоги игры
-        /// </summary>
-        public ObservableCollection<GameDialog> Dialogs { get; set; }
-        /// <summary>
-        /// Русские тексты
-        /// </summary>
-        public ObservableCollection<GameText> Strings { get; set; }
-        /// <summary>
-        /// Все инфопоршни игры
-        /// </summary>
-        public ObservableCollection<Infoportion> Infoportions { get; set; }
-
+        public GameClass Game { get; set; }
         public ObservableCollection<Object> ReactorObjects { get; set; }
 
 
@@ -101,26 +71,56 @@ namespace SRTP_Stalker_World
                 }
                 else
                 {
-                    searchString = "";
+                    searchString = value;
                 }
             }
         }
 
 
+        public IEnumerable<Object> TreeInis
+        {
+            get
+            {
+                List<VMTreeObjs> res = new List<VMTreeObjs>();
+                ArrayList inifiles = Game.GetIniFiles();
+                foreach (string f in inifiles)
+                {
+                    VMTreeObjs Dict = new VMTreeObjs();
+                    List<GameIni> IniList = new List<GameIni>();
+                    foreach (GameIni item in Game.Inis)
+                    {
+                        if (Path.GetFileName(item.thisFile.FileName) == f)
+                        {
+                            if (item.Id.IndexOf(SearchString) >= 0)
+                            {
+                                IniList.Add(item);
+                            }
+                        }
+                    }
+
+                    if (IniList.Count > 0)
+                    {
+                        Dict.FileName = f;
+                        Dict.EnumObjcs = IniList;
+                        res.Add(Dict);
+                    }
+                }
+                return res;
+            }
+        }
         public IEnumerable<Object> TreeDialogs
         {
             get
             {
-                //Dictionary<string, List<GameDialog>> Dict = new Dictionary<string, List<GameDialog>>();
                 List<VMTreeObjs> res = new List<VMTreeObjs>();
-                ArrayList dlgfiles = GetDialogFiles();
+                ArrayList dlgfiles = Game.GetDialogFiles();
                 foreach (string f in dlgfiles)
                 {
                     VMTreeObjs Dict = new VMTreeObjs();
                     List<GameDialog> DialogList = new List<GameDialog>();
-                    foreach (GameDialog item in Dialogs)
+                    foreach (GameDialog item in Game.Dialogs)
                     {
-                        if (item.thisFile.FileName == Folder_game + GAMEPLAY + f)
+                        if (item.thisFile.FileName == Game.Folder_game + GameClass.GAMEPLAY + f)
                         {
                             if (item.Id.IndexOf(SearchString) >= 0)
                             {
@@ -136,7 +136,6 @@ namespace SRTP_Stalker_World
                         res.Add(Dict);
                     }
                 }
-                //return Dict;
                 return res;
             }
         }
@@ -145,14 +144,44 @@ namespace SRTP_Stalker_World
             get
             {
                 List<VMTreeObjs> res = new List<VMTreeObjs>();
-                ArrayList dlgfiles = GetStringTableFiles(); // Массив имён файлов
+                ArrayList dlgfiles = Game.GetStringTableFiles(); // Массив имён файлов
                 foreach (string f in dlgfiles) // цикл по именам файлов
                 {
                     VMTreeObjs Dict = new VMTreeObjs(); // Словарь: Файл -> Строки
                     List<GameText> StringList = new List<GameText>(); // Массив отфильтрованных строк
-                    foreach (GameText item in Strings) // Цикл по всем строкам
+                    foreach (GameText item in Game.Strings) // Цикл по всем строкам
                     {
-                        if (item.thisFile.FileName == Folder_game + TEXT_RUS + f) // Имена файлов совпадают
+                        if (item.thisFile.FileName == Game.Folder_game + GameClass.TEXT_RUS + f) // Имена файлов совпадают
+                        {
+                            if (item.Id.IndexOf(SearchString) >= 0)
+                            {
+                                StringList.Add(item);
+                            }
+                        }
+                    }
+                    if (StringList.Count > 0)
+                    {
+                        Dict.FileName = f;
+                        Dict.EnumObjcs = StringList;
+                        res.Add(Dict);
+                    }
+                }
+                return res;
+            }
+        }
+        public IEnumerable<Object> TreeInfos
+        {
+            get
+            {
+                List<VMTreeObjs> res = new List<VMTreeObjs>();
+                ArrayList infofiles = Game.GetInfoportionsFiles(); // Массив имён файлов
+                foreach (string f in infofiles) // цикл по именам файлов
+                {
+                    VMTreeObjs Dict = new VMTreeObjs(); // Словарь: Файл -> Строки
+                    List<Infoportion> StringList = new List<Infoportion>(); // Массив отфильтрованных строк
+                    foreach (Infoportion item in Game.Infoportions) // Цикл по всем строкам
+                    {
+                        if (item.thisFile.FileName == Game.Folder_game + GameClass.GAMEPLAY + f) // Имена файлов совпадают
                         {
                             if (item.Id.IndexOf(SearchString) >= 0)
                             {
@@ -188,60 +217,27 @@ namespace SRTP_Stalker_World
                 SRes_dlg.Count = SRes_dlg.Objs.Count;
                 res.Add(SRes_dlg);
 
+                SearchResult SRes_inf = new SearchResult();
+                SRes_inf.NameObject = "Infoportions";
+                SRes_inf.Objs = TreeInfos.ToList();
+                SRes_inf.Count = SRes_inf.Objs.Count;
+                res.Add(SRes_inf);
+
+                SearchResult SRes_ini = new SearchResult();
+                SRes_ini.NameObject = "Ini_sections";
+                SRes_ini.Objs = TreeInis.ToList();
+                SRes_ini.Count = SRes_ini.Objs.Count;
+                res.Add(SRes_ini);
+
                 return res;
             }
         }
 
-        public ArrayList GetInfoportionsFiles()
-        {
-            ArrayList res = new ArrayList();
-            if (File.Exists(Folder_game + SYSTEM_FILE))
-            {
-                //Создание объекта, для работы с файлом
-                INIManager IniManager = new INIManager(Folder_game + SYSTEM_FILE);
-
-                //Получить значение
-                string files = IniManager.GetPrivateString("info_portions", "files");
-                string[] buff = files.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (string str in buff)
-                {
-                    res.Add(str.Trim() + ".xml");
-                }
-            }
-            else
-            {
-                throw new Exception($"Отсутствует файл {SYSTEM_FILE}");
-            }
-            return res;
-        }
-        public ArrayList GetTasksFiles()
-        {
-            ArrayList res = new ArrayList();
-            if (File.Exists(Folder_game + SYSTEM_FILE))
-            {
-                //Создание объекта, для работы с файлом
-                INIManager IniManager = new INIManager(Folder_game + SYSTEM_FILE);
-
-                //Получить значение
-                string files = IniManager.GetPrivateString("game_tasks", "files");
-                string[] buff = files.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (string str in buff)
-                {
-                    res.Add(str.Trim() + ".xml");
-                }
-            }
-            else
-            {
-                throw new Exception($"Отсутствует файл {SYSTEM_FILE}");
-            }
-            return res;
-        }
 
         /// <summary>
         /// Текущий выбранный для редактирования диалог
         /// </summary>
         private GameDialog selectedDialog;
-        private string folder_game;
         private string searchString;
         private GameText selectedString;
 
@@ -260,11 +256,11 @@ namespace SRTP_Stalker_World
                   (addDialogCommand = new RelayCommand(obj =>
                   {
                       string fn = obj as string;
-                      fn = Folder_game + GAMEPLAY + fn;
+                      fn = Game.Folder_game + GameClass.GAMEPLAY + fn;
                       XmlDocument xDoc = new XmlDocument();
                       xDoc.Load("EmptyDialog.xml");
                       GameDialog d = new GameDialog(xDoc, fn);
-                      Dialogs.Insert(0, d);
+                      Game.Dialogs.Insert(0, d);
                       SelectedDialog = d;
                   }));
             }
@@ -290,7 +286,7 @@ namespace SRTP_Stalker_World
                   (addDialogCommand = new RelayCommand(obj =>
                   {
                       string fn = obj as string;
-                      Load(fn);
+                      Game.Load(fn);
                   }));
             }
         }
@@ -304,59 +300,6 @@ namespace SRTP_Stalker_World
                       MessageBoxResult result = MessageBox.Show("Окрасить кнопку в красный цвет?");
                   }));
             }
-        }
-
-        // Поиск элементов в масивах
-        /// <summary>
-        /// Возвращает объект GameString
-        /// </summary>
-        /// <param name="Id_string">Уникальное имя текста</param>
-        /// <returns>GameString или null</returns>
-        public GameText GetGameStringByID(string Id_string)
-        {
-            foreach (GameText str in Strings)
-            {
-                if (str.Id == Id_string)
-                {
-                    return str;
-                }
-            }
-            return new GameText();
-        }
-        /// <summary>
-        /// Поиск текста в файлах локализации по ID текста
-        /// </summary>
-        /// <param name="Id_string">Уникальное имя текста</param>
-        /// <returns>Русский текст или пустая строка</returns>
-        public string GetTextRusByID(string Id_string)
-        {
-            return GetGameStringByID(Id_string).Text;
-        }
-        /// <summary>
-        /// Возвращает полный путь к файлу с искомым game_string
-        /// </summary>
-        /// <param name="Id_string">id game_string</param>
-        /// <returns>Путь к файлу или пустая строка</returns>
-        public string GetFileNameByStringID(string Id_string)
-        {
-            return GetGameStringByID(Id_string).thisFile.FileName;
-        }
-
-        /// <summary>
-        /// Поиск поршня
-        /// </summary>
-        /// <param name="vId">ID поршня</param>
-        /// <returns>Объект Infoportion</returns>
-        public Infoportion GetInfoportionById(string vId)
-        {
-            foreach (Infoportion item in Infoportions)
-            {
-                if (item.Id == vId)
-                {
-                    return item;
-                }
-            }
-            return null;
         }
 
         //Методы
@@ -384,213 +327,13 @@ namespace SRTP_Stalker_World
             ReactorObjects.Remove(value);
         }
 
-        /// <summary>
-        /// Чтение и загрузка ресурсов игры
-        /// </summary>
-        /// <param name="Folder_game">Путь к папке с игрой</param>
-        public void Load(string Folder_game)
-        {
-            // Проверяем существование папки gamedata\
-            if (Directory.Exists(Folder_game + GAMEDATA))
-            {
-                // Считываем файл локализации
-                ArrayList arrSTFiles = GetStringTableFiles();
-                // Проверить каждый файл на существование
-                foreach (string patch in arrSTFiles)
-                {
-                    if (File.Exists(Folder_game + TEXT_RUS + patch))
-                    {
-                        XmlDocument xDoc = new XmlDocument();
-                        xDoc.Load(Folder_game + TEXT_RUS + patch);
-                        XmlNode xStringTable = xDoc.DocumentElement;
-                        XmlNodeList xStringList = xStringTable.SelectNodes("string");
-                        foreach (XmlNode xString in xStringList)
-                        {
-                            Strings.Add(new GameText(xString, Folder_game + TEXT_RUS + patch));
-                        }
-                    }
-                    else
-                    {
-                        // Вывод в консоль
-                    }
-                }
-                // Получили список файлов с поршнями
-                ArrayList arrInfoFiles = GetInfoportionsFiles();
-                // Проверить каждый файл на существование
-                foreach (string patch in arrInfoFiles)
-                {
-                    if (File.Exists(Folder_game + GAMEPLAY + patch))
-                    {
-                        // Открыть файл
-                        XmlDocument xDoc = new XmlDocument();
-                        try
-                        {
-                            xDoc.Load(Folder_game + GAMEPLAY + patch);
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine($"Ошибка {ex.Message} в файле: {patch}");
-                            continue;
-                        }
-                        finally
-                        {
-                            XmlNode xRoot = xDoc.DocumentElement;
-                            if (xRoot != null)
-                            {
-                                // Ищем XML диалога
-                                XmlNodeList xInfos = xRoot.SelectNodes("info_portion");
-                                // Передаём в конструктор диалога строку с XML
-                                foreach (XmlNode n in xInfos)
-                                {
-                                    Infoportion Inf = new Infoportion(n, Folder_game + GAMEPLAY + patch);
-                                    //string dlgid = n.Attributes.GetNamedItem("id").Value;
-                                    Infoportions.Add(Inf);
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        //Вывод в лог
-                    }
-                }
-                // Получили список файлов с диалогами
-                ArrayList arrDialogFiles = GetDialogFiles();
-                // Проверить каждый файл на существование
-                foreach (string patch in arrDialogFiles)
-                {
-                    if (File.Exists(Folder_game + GAMEPLAY + patch))
-                    {
-                        // Открыть файл
-                        XmlDocument xDoc = new XmlDocument();
-                        xDoc.Load(Folder_game + GAMEPLAY + patch);
-                        XmlNode xRoot = xDoc.DocumentElement;
-                        // Ищем XML диалога
-                        XmlNodeList xDialogs = xRoot.SelectNodes("dialog");
-                        // Передаём в конструктор диалога строку с XML
-                        foreach (XmlNode n in xDialogs)
-                        {
-                            GameDialog Dlg = new GameDialog(n, Folder_game + GAMEPLAY + patch);
-                            //string dlgid = n.Attributes.GetNamedItem("id").Value;
-                            Dialogs.Add(Dlg);
-                        }
-                    }
-                    else
-                    {
-                        //Вывод в лог
-                    }
-                }
-            }
-            else
-            {
-                throw new Exception("В папке с игрой не найдена папка 'gamedata' \n распакуйте *.db архивы и перезапустите программу.");
-            }
-        }
-        /// <summary>
-        /// Нормализация XML файла путём удаления комментариев
-        /// </summary>
-        /// <param name="v">Полный путь к файлу</param>
-        /// <returns>Строка XML данных</returns>
-        public string NormalFile(string v)
-        {
-            string s = ""; // Строка - результат
-            string[] lines = File.ReadAllLines(v); // Читаем файл построчно
-            for (int i = lines.Length - 1; i > 0; i--)
-            {
-                string r = lines[i]; // буфер текущей строки
-                string pattern = @"<!--(.*)-->"; // определяем строку паттерна для поиска комментов в стрке
-                string target = ""; // определяем строку на которую будем производить замену
-                Regex regex = new Regex(pattern); // создаём паттерн
-                lines[i] = regex.Replace(r, target); // производим замену
-
-                if (lines[i].IndexOf("#include") >= 0) // проверяем тек.строку на наличие подключения др. файлов в текущий файл
-                {
-                    // <!-- textextext -->
-                    Regex rg = new Regex(@"""(.*)""");  // создаём паттерн "файл.тип"
-                    string result = rg.Match(lines[i]).Groups[1].Value; // получаем текст между кавычками
-                    Console.WriteLine(result);
-                    string fil = File.ReadAllText(Folder_game + CONFIG + result); // читаем полученный файл
-                    lines[i] = regex.Replace(fil, target); // вставляем текст файла вместо #include
-                }
-                s = lines[i] + s;
-            }
-            return s;
-        }
-        /// <summary>
-        /// Получаем строковый массив с именами диалоговых файлов 
-        /// </summary>
-        /// <returns>ArrayList с именами xml-файлов</returns>
-        public ArrayList GetDialogFiles()
-        {
-            ArrayList arrDialogFiles = new ArrayList();
-            if (File.Exists(Folder_game + SYSTEM_FILE))
-            {
-                //Создание объекта, для работы с файлом
-                INIManager IniManager = new INIManager(Folder_game + SYSTEM_FILE);
-
-                //Получить значение
-                string files = IniManager.GetPrivateString("dialogs", "files");
-                string[] buff = files.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (string str in buff)
-                {
-                    arrDialogFiles.Add(str.Trim() + ".xml");
-                }
-            }
-            else
-            {
-                throw new Exception($"Отсутствует файл {SYSTEM_FILE}");
-            }
-            return arrDialogFiles;
-        }
-        /// <summary>
-        /// Получаем список файлов локализации
-        /// </summary>
-        /// <returns>Массив строк с файлами локализации</returns>
-        public ArrayList GetStringTableFiles()
-        {
-            ArrayList arrDialogFiles = new ArrayList();
-            if (File.Exists(Folder_game + LOCALIZATION_FILE))
-            {
-                //Создание объекта, для работы с файлом
-                INIManager IniManager = new INIManager(Folder_game + LOCALIZATION_FILE);
-
-                //Получить значение
-                string files = IniManager.GetPrivateString("string_table", "files");
-                string[] buff = files.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (string str in buff)
-                {
-                    arrDialogFiles.Add(str.Trim() + ".xml");
-                }
-            }
-            else
-            {
-                throw new Exception($"Отсутствует файл {LOCALIZATION_FILE}");
-            }
-            return arrDialogFiles;
-        }
 
         // Constructor
         public ViewModel()
         {
-            Folder_game = "";
             SearchString = "";
-            //SelectedString = new GameText();
-            Strings = new ObservableCollection<GameText>();
-            Dialogs = new ObservableCollection<GameDialog>();
-            Infoportions = new ObservableCollection<Infoportion>();
+            Game = new GameClass();
             ReactorObjects = new ObservableCollection<object>();
-        }
-        public ViewModel(string Patch) : base()
-        {
-            if (Folder_game == "")
-            {
-                throw new Exception("Не задан путь к папке с игрой!");
-            }
-            else
-            {
-                Folder_game = "";
-                Load(Patch);
-            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

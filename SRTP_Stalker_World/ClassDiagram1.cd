@@ -26,7 +26,7 @@
   <Class Name="SRTP_Stalker_World.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="13.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gAAAAAAAAAABAAAAAACAAAEEAAAgAAAAIAAAiAAAAAA=</HashCode>
+      <HashCode>gAAAAAAAAAABAAAAAACACAEEAAAgAAAAIAAAiAAAAAA=</HashCode>
       <FileName>MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -73,7 +73,7 @@
   <Class Name="SRTP_Stalker_World.ViewModel" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="15.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ZAgEgAQAAAAIOAAhICwIgggEgQAAoIiCAAAQAGCICAE=</HashCode>
+      <HashCode>ZAgEAAQAAAAAEAAgICAIQAAAgAgAAIACAAAAAGAICAM=</HashCode>
       <FileName>ViewModel.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -103,35 +103,35 @@
   <Class Name="SRTP_Stalker_World.GameTextObjects.GameArticle" Collapsed="true">
     <Position X="0.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAIAAAAAAAAAEAAAAAAAAAAEAAAAACAAAAAAAAAA=</HashCode>
       <FileName>GameTextObjects\GameArticle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SRTP_Stalker_World.GameTextObjects.GameDialog" Collapsed="true">
     <Position X="2.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAIAAAAAAQAAEAAAAQBAAAAEAAAAiCAAAAgACQgA=</HashCode>
+      <HashCode>AAAAAIAAAAAAQAAEAAAAQBAAAAEAAAAwCAAAAgACQgA=</HashCode>
       <FileName>GameTextObjects\GameDialog.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SRTP_Stalker_World.GameTextObjects.GameTask" Collapsed="true">
     <Position X="5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAAAIAAAEAAAAgAAAAAAAAAAACAACAAAAAAAAA=</HashCode>
+      <HashCode>AQAAAIAAAIAAAEAEAAgAAAAAAAEAAACACCAAAAAAAAA=</HashCode>
       <FileName>GameTextObjects\GameTask.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SRTP_Stalker_World.GameTextObjects.GameText" Collapsed="true">
     <Position X="7.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <HashCode>AAAACIAAAAAAAAAEAAAAAAAAAAEAAAAACAAACAAAAAA=</HashCode>
       <FileName>GameTextObjects\GameText.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SRTP_Stalker_World.GameTextObjects.Infoportion" Collapsed="true">
     <Position X="9.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAAAAAAEBEAAAAAAgAEAAAAAAIEEAgiAAAAAQ=</HashCode>
+      <HashCode>AAgAAIAAAAAAAEBEAAAAAAgAEAEAAAAIGEAgiAAAAAQ=</HashCode>
       <FileName>GameTextObjects\Infoportion.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -150,10 +150,10 @@
       <FileName>GameTextObjects\IniManager.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SRTP_Stalker_World.GameTextObjects.MainClass" Collapsed="true">
-    <Position X="5" Y="0.5" Width="1.5" />
+  <Class Name="SRTP_Stalker_World.GameTextObjects.MainClass">
+    <Position X="0.5" Y="3.25" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>ABACAIAAAAAAAAAAIBBAAAEAgAEAAAACCAAAAAAAAAA=</HashCode>
+      <HashCode>ABACAIAAAAAAAAAAIBBAAAEAgAEAAAAACAAAAAAAAAA=</HashCode>
       <FileName>GameTextObjects\MainClass.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -191,6 +191,21 @@
     <Position X="12" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SRTP_Stalker_World.GameClass">
+    <Position X="9.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAhAAAAAAIKBBBIAwAgggAgQAAoAiAAAwYAACACAA=</HashCode>
+      <FileName>GameTextObjects\GameClass.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SRTP_Stalker_World.GameIni">
+    <Position X="3.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAQAAAAAEAAAAACAAAAAACAAA=</HashCode>
+      <FileName>GameTextObjects\GameIni.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

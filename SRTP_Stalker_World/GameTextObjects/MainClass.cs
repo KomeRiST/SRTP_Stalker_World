@@ -82,6 +82,8 @@ namespace SRTP_Stalker_World.GameTextObjects
             thisFile = new MyFile(FileName);
         }
 
+        public MainClass() : base() { }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {

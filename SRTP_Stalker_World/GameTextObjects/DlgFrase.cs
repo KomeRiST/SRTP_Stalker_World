@@ -59,7 +59,7 @@ namespace SRTP_Stalker_World.GameTextObjects
                 {
                     t = xN.InnerText;
                 }
-                Text = MainWindow.GAME.GetGameStringByID(t);
+                Text = MainWindow.VM.Game.GetGameStringByID(t);
                 Next = new ObservableCollection<DlgFrase>();
                 NextText = new List<string>();
                 XmlNodeList xNext = xNode.SelectNodes("next");

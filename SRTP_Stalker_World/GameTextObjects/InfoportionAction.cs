@@ -67,25 +67,25 @@ namespace SRTP_Stalker_World.GameTextObjects
             {
                 //Infoportion info;
                 //info = MainWindow.GAME.GetInfoportionById(item.InnerText);
-                Has.Add(MainWindow.GAME.GetInfoportionById(item.InnerText));
+                Has.Add(MainWindow.VM.Game.GetInfoportionById(item.InnerText));
             }
             foreach (XmlNode item in dont_has_info)
             {
                 //Infoportion info;
                 //info = MainWindow.GAME.GetInfoportionById(item.InnerText);
-                DontHas.Add(MainWindow.GAME.GetInfoportionById(item.InnerText));
+                DontHas.Add(MainWindow.VM.Game.GetInfoportionById(item.InnerText));
             }
             foreach (XmlNode item in give_info)
             {
                 //Infoportion info;
                 //info = MainWindow.GAME.GetInfoportionById(item.InnerText);
-                Give.Add(MainWindow.GAME.GetInfoportionById(item.InnerText));
+                Give.Add(MainWindow.VM.Game.GetInfoportionById(item.InnerText));
             }
             foreach (XmlNode item in disable_info)
             {
                 //Infoportion info;
                 //info = MainWindow.GAME.GetInfoportionById(item.InnerText);
-                Disable.Add(MainWindow.GAME.GetInfoportionById(item.InnerText));
+                Disable.Add(MainWindow.VM.Game.GetInfoportionById(item.InnerText));
             }
 
             foreach (XmlNode item in action)
