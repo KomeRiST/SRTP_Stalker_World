@@ -37,6 +37,18 @@ namespace SRTP_Stalker_World
             }
         }
         /// <summary>
+        /// Текущий выбранный для редактирования Ini-section
+        /// </summary>
+        public GameIni SelectedIni
+        {
+            get { return selectedIni; }
+            set
+            {
+                selectedIni = value;
+                OnPropertyChanged("SelectedIni");
+            }
+        }
+        /// <summary>
         /// Текущий выбранный GameString для отображения и редактирования
         /// </summary>
         public GameText SelectedString
@@ -244,6 +256,7 @@ namespace SRTP_Stalker_World
         // Команды
         private RelayCommand addDialogCommand;
         private RelayCommand addFraseVoiced;
+        private GameIni selectedIni;
 
         /// <summary>
         /// создание нового диалога
@@ -352,35 +365,36 @@ namespace SRTP_Stalker_World
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
             FrameworkElement element = container as FrameworkElement;
+            return element.FindResource("TabItemRDialog_Header") as DataTemplate;
 
-            if (element != null && item != null)
-            { // Блок проверки элемента из массива редактируемых объектов
-                if (item is GameTask)
-                {
-                    //GameTask taskitem = item as GameTask; // Приводим текущий Object к конкретному объекту
-                    return element.FindResource("TabItemRTask_Header") as DataTemplate;
+            //if (element != null && item != null)
+            //{ // Блок проверки элемента из массива редактируемых объектов
+            //    if (item is GameTask)
+            //    {
+            //        //GameTask taskitem = item as GameTask; // Приводим текущий Object к конкретному объекту
+            //        return element.FindResource("TabItemRTask_Header") as DataTemplate;
 
-                    //if (taskitem.Prio == "1")
-                    //    return
-                    //        element.FindResource("importantTaskTemplate") as DataTemplate; // Собственно выбираем нужный шаблон для отображения инфы
-                    //else
-                    //    return
-                    //        element.FindResource("myTaskTemplate") as DataTemplate;
-                }
-                if (item is GameDialog)
-                {
-                    return element.FindResource("TabItemRDialog_Header") as DataTemplate;
-                }
-                if (item is Infoportion)
-                {
-                    return element.FindResource("TabItemRInfoport_Header") as DataTemplate;
-                }
-                if (item is GameText)
-                {
-                    return element.FindResource("TabItemRString_Header") as DataTemplate;
-                }
-            }
-            return null;
+            //        //if (taskitem.Prio == "1")
+            //        //    return
+            //        //        element.FindResource("importantTaskTemplate") as DataTemplate; // Собственно выбираем нужный шаблон для отображения инфы
+            //        //else
+            //        //    return
+            //        //        element.FindResource("myTaskTemplate") as DataTemplate;
+            //    }
+            //    if (item is GameDialog)
+            //    {
+            //        return element.FindResource("TabItemRDialog_Header") as DataTemplate;
+            //    }
+            //    if (item is Infoportion)
+            //    {
+            //        return element.FindResource("TabItemRInfoport_Header") as DataTemplate;
+            //    }
+            //    if (item is GameText)
+            //    {
+            //        return element.FindResource("TabItemRString_Header") as DataTemplate;
+            //    }
+            //}
+            //return null;
         }
     }
 
@@ -418,6 +432,10 @@ namespace SRTP_Stalker_World
                 if (item is GameText)
                 {
                     return element.FindResource("TabItemRString_Content") as DataTemplate;
+                }
+                if (item is GameIni)
+                {
+                    return element.FindResource("TabItemRIni_Content") as DataTemplate;
                 }
             }
             return null;

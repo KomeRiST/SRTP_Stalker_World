@@ -20,12 +20,12 @@ namespace SRTP_Stalker_World
         /// <summary>
         /// Список от которых наследуется данный объект
         /// </summary>
-        public ObservableCollection<GameIni> Parent;
+        public ObservableCollection<GameIni> Parent { get; set; }
 
         /// <summary>
         /// Список свойств объекта
         /// </summary>
-        public Dictionary<string, string> Properties;
+        public Dictionary<string, string> Properties { get; set; }
 
         public override void Delete()
         {

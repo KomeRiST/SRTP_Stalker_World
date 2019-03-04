@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System"
         xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
         xmlns:local="clr-namespace:SRTP_Stalker_World"
         mc:Ignorable="d"
@@ -157,9 +158,7 @@
         </DataTemplate>
         <DataTemplate x:Key="TabItemRInfoport_Content">
             <DockPanel>
-                <TextBlock>Диалог</TextBlock>
                 <TextBlock Text="{Binding Path=Id}" />
-                <Button Content="X"/>
             </DockPanel>
         </DataTemplate>
         <DataTemplate x:Key="TabItemRString_Content">
@@ -171,6 +170,45 @@
                 <TextBox x:Name="textBox" HorizontalAlignment="Stretch" Height="Auto" Margin="10,12,0,10" TextWrapping="Wrap" Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" Width="Auto" FontSize="20"/>
                 <TextBox x:Name="textBox1" HorizontalAlignment="Stretch" Height="300" Margin="10" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" Width="Auto" FontSize="24"/>
             </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="TabItemRIni_Content">
+            <DataGrid ItemsSource="{Binding Properties}" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Disabled">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Свойство" Width="175" Binding="{Binding Key, Mode=OneWay}"/>
+                    <DataGridTextColumn Header="Значение" Width="175" Binding="{Binding Value, Mode=OneWay}"/>
+                    <DataGridTextColumn Header="Значение" Width="175" Binding="{Binding Value, Mode=OneWay}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DataTemplate>
+        <DataTemplate x:Key="TabItemRIni_Content_Panels">
+            <WrapPanel Name="PersonsWrapPanel" Grid.Row="0">
+                <ItemsControl ItemsSource="{Binding Properties}" Margin="3" >
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" Width="auto" ItemWidth="125" ItemHeight="70" Margin="3">
+                            </WrapPanel>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="#FF896F6F" Background="{x:Null}" BorderThickness="1" CornerRadius="3" Margin="3">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Key, Mode=OneWay}" Width="70" ToolTip="{Binding Key, Mode=OneWay}" FontWeight="Bold"/>
+                                        <Button Content="z" Height="16" Width="16" HorizontalAlignment="Right"/>
+                                        <Button Content="O" Height="16" Width="16" HorizontalAlignment="Right"/>
+                                        <Button Content="X" Height="16" Width="16" HorizontalAlignment="Right"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBox Text="{Binding Value, Mode=OneWay}"></TextBox>
+                                        <TextBox Text="Подсказка" ></TextBox>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </WrapPanel>
         </DataTemplate>
 
     </Window.Resources>
